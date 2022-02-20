@@ -12,7 +12,7 @@ struct MealList: Decodable {
 }
 
 struct Meals: Decodable {
-    enum Keys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case name = "strMeal"
         case mealID = "idMeal"
         case mealsThumbnail = "strMealThumb"

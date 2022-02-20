@@ -8,7 +8,7 @@
 import Foundation
 
 struct MealDetailList: Decodable {
-    enum Keys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case mealDetails = "meals"
     }
     let mealDetails: [Meals]

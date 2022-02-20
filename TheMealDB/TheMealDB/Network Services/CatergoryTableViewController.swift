@@ -9,8 +9,6 @@ import UIKit
 
 class CategoryTableViewController: UITableViewController {
     
-    // MARK: - Outlets
-    
     // MARK: - Properties
     var viewModel: CategoryViewModel!
     
@@ -27,7 +25,6 @@ class CategoryTableViewController: UITableViewController {
         return viewModel.categories.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as?
                 CategoryTableViewCell else { return UITableViewCell() }
@@ -36,23 +33,25 @@ class CategoryTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell,
+        let category = cell.category?.name else { return }
+        
+        goToMealList(for: category)
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    func goToMealList(for category: String) {
+        let storyboard = UIStoryboard(name: "MealListTableViewController", bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() as? MealListTableViewController else { return }
+        vc.setViewModel(using: category)
+        navigationController?.pushViewController(vc, animated: true)
+        
+        
+    }
 }// End of Class
 
 extension CategoryTableViewController: CategoryViewModelDelegate {
     func fetchCategoriesSuccessfully() {
         tableView.reloadData()
     }
-    
-    
 }

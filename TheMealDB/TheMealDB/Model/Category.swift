@@ -13,10 +13,10 @@ struct CategoryList: Decodable {
 
 struct Category: Decodable {
     enum CodingKeys: String, CodingKey {
-        case category = "strCategory"
+        case name = "strCategory"
         case categoryThumbnail = "strCategoryThumb"
     }
     
-    let category: String
+    let name: String
     let categoryThumbnail: String
 }

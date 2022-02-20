@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="btL-zo-pYY">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Meal List Table View Controller-->
+        <scene sceneID="gP7-MH-MM2">
+            <objects>
+                <tableViewController id="btL-zo-pYY" customClass="MealListTableViewController" customModule="TheMealDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="rn5-3Y-4J3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mealCell" rowHeight="100" id="9fd-TG-abs" customClass="MealListTableViewCell" customModule="TheMealDB" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9fd-TG-abs" id="Hdu-FL-Gyx">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHP-iH-m3k">
+                                            <rect key="frame" x="110" y="39" width="294" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rays" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="h1L-Ks-Va7" customClass="AsyncImageView" customModule="TheMealDB" customModuleProvider="target">
+                                            <rect key="frame" x="5" y="9.5" width="100" height="80.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="EfQ-VA-UAE"/>
+                                                <constraint firstAttribute="width" secondItem="h1L-Ks-Va7" secondAttribute="height" multiplier="1:1" id="hab-Gt-WUs"/>
+                                                <constraint firstAttribute="height" constant="100" id="srx-qz-zpZ"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="h1L-Ks-Va7" secondAttribute="bottom" constant="10" id="FbR-5D-GUR"/>
+                                        <constraint firstItem="MHP-iH-m3k" firstAttribute="leading" secondItem="h1L-Ks-Va7" secondAttribute="trailing" constant="5" id="S66-sJ-PSV"/>
+                                        <constraint firstAttribute="bottom" secondItem="MHP-iH-m3k" secondAttribute="bottom" constant="40" id="UyO-TN-FfR"/>
+                                        <constraint firstItem="h1L-Ks-Va7" firstAttribute="top" secondItem="Hdu-FL-Gyx" secondAttribute="top" constant="10" id="fJM-fm-1yT"/>
+                                        <constraint firstItem="MHP-iH-m3k" firstAttribute="top" secondItem="Hdu-FL-Gyx" secondAttribute="top" constant="39" id="gGF-g8-qm0"/>
+                                        <constraint firstAttribute="trailing" secondItem="MHP-iH-m3k" secondAttribute="trailing" constant="10" id="rDq-7g-Knd"/>
+                                        <constraint firstItem="h1L-Ks-Va7" firstAttribute="leading" secondItem="Hdu-FL-Gyx" secondAttribute="leading" constant="5" id="x6I-3E-xJQ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mealListImageView" destination="h1L-Ks-Va7" id="P00-3h-lwo"/>
+                                    <outlet property="mealListNameLabel" destination="MHP-iH-m3k" id="2Q7-yi-hJS"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="btL-zo-pYY" id="bK4-w5-fQY"/>
+                            <outlet property="delegate" destination="btL-zo-pYY" id="osE-ou-0X1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fMK-0M-wG8"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4sx-jR-xQC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1418.840579710145" y="42.857142857142854"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="rays" catalog="system" width="128" height="122"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

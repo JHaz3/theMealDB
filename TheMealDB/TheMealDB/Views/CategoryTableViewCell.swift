@@ -15,7 +15,7 @@ class CategoryTableViewCell: UITableViewCell {
     var category: Category? {
         didSet {
                 guard let category = self.category else { return }
-                self.categoryNameLabel.text = category.category
+                self.categoryNameLabel.text = category.name
                 self.fetchImage(with: category.categoryThumbnail)
         }
     }

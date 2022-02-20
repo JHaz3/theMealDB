@@ -8,34 +8,39 @@
 import UIKit
 
 class MealListTableViewController: UITableViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    
+    var viewModel: MealListViewModel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchMealList()
     }
 
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 0
+        return viewModel.mealList.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "mealCell", for: indexPath) as? MealListTableViewCell else { return UITableViewCell() }
+        let meal = viewModel.mealList[indexPath.row]
+        cell.meal = meal
+        
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    // TODO: didSelectRowAt for our recipe detail view
+    
+    func setViewModel(using catString: String) {
+        self.viewModel = MealListViewModel(catString: catString, delegate: self)
     }
-    */
+    
+}// End of Class
 
+extension MealListTableViewController: MealListViewModelDelegate {
+    func fetchMealListSuccessfully() {
+        tableView.reloadData()
+    }
 }
